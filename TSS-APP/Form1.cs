@@ -21,13 +21,6 @@ namespace TSS_APP
 
         private void Leer_Archivo_btn(object sender, EventArgs e)
         {
-            
-
-        }
-
-        private void Cargar_Informacion_btn(object sender, EventArgs e)
-        {
-            SqlConnection conn = new SqlConnection("");
 
             try
             {
@@ -38,7 +31,8 @@ namespace TSS_APP
 
                 ofd.ShowDialog();
 
-                string archivo = ofd.ToString();
+                String archivo = ofd.FileName;
+                
 
                 if (archivo.Trim().Length > 0)
                     using (StreamReader sr = new StreamReader(archivo))
@@ -48,15 +42,21 @@ namespace TSS_APP
 
 
                         String line = sr.ReadToEnd();
-                        dataGridView1.DataSource = dt;
+                        textBox1.Text = line;
                     }
-
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ha ocurrido un error: " + ex.Message + ex.StackTrace);
             }
+        }
+
+        private void Cargar_Informacion_btn(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=TSSDB;Integrated Security=True");
+
+           
 
         }
     }
