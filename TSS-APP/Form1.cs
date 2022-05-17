@@ -55,7 +55,7 @@ namespace TSS_APP
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hubo a ocurrido un error: " + ex.Message + ex.StackTrace);
+                MessageBox.Show("Ha ocurrido un error: " + ex.Message + ex.StackTrace);
             }
 
         }
