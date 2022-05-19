@@ -27,21 +27,26 @@ namespace TSS_APP
             try
             {
                 OpenFileDialog ofd = new OpenFileDialog();
-
+                //Filtro de tipo de archivo.
                 ofd.Filter = "All Files (*.*)|*.*";
+                //Indice establecido del filtro.
                 ofd.FilterIndex = 1;
-
+                //Mostrar el dialogo.
                 ofd.ShowDialog();
 
+                //Contiene una cadena con la ruta del archivo.
                 selectedFileName = ofd.FileName;
                 
 
                 if (selectedFileName.Trim().Length > 0)
                 {
                     button2.Enabled = true;
+                    
                     using (StreamReader sr = new StreamReader(selectedFileName))
                     {
+                        //Leer los caracteres del archivo desde la posicion actual hasta el final.
                         String line = sr.ReadToEnd();
+                        //Mostrar los caracteres en un textbox.
                         textBox1.Text = line;
                     }
                 }
